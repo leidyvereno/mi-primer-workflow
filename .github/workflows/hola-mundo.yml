@@ -10,9 +10,16 @@ jobs:
   hola-mundo:  # Nombre interno del job
     runs-on: ubuntu-latest  # El job se ejecuta en un contenedor con Ubuntu (última versión disponible)
 
+    # Definicion de variables de entorno (env) para el job
+    env:
+      MENSAJE: "¡Bienvenido a Github Actions!" # variable personalizado
+      
     steps:
     - name: Checkout del codigo
-      uses: actions/checkout@v4 #Accion publica desde Github Marketplace
+      uses: actions/checkout@v4 # Accion publica desde Github Marketplace
 
-    - name: Mostrar mensaje  # Nombre del paso (puede ser cualquier texto descriptivo)
-      run: echo "Hola mundo desde GitHub Actions con acción pública"  # Comando que se ejecuta en la terminal del runner
+    - name: Mostrar mensaje  # imprime mensaje y nombre del usuario
+      run: |
+        echo "${{ env.MENSAJE }}"
+        echo "este workflow fue ejecutado por el usuario: ${{ github.actor }}" 
+      # Muestra el nombre del usuario que hizo push (contexto Github)
