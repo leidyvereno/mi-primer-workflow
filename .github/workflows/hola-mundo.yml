@@ -10,6 +10,9 @@ jobs:
   hola-mundo:  # Nombre interno del job
     runs-on: ubuntu-latest  # El job se ejecuta en un contenedor con Ubuntu (última versión disponible)
 
-    steps:  # Lista de pasos que se ejecutarán dentro del job
+    steps:
+    - name: Checkout del codigo
+      uses: actions/checkout@v4 #Accion publica desde Github Marketplace
+
     - name: Mostrar mensaje  # Nombre del paso (puede ser cualquier texto descriptivo)
-      run: echo "Hola mundo desde GitHub Actions"  # Comando que se ejecuta en la terminal del runner
+      run: echo "Hola mundo desde GitHub Actions con acción pública"  # Comando que se ejecuta en la terminal del runner
